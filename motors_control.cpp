@@ -6,7 +6,7 @@
 // Defines
 //**************************************************
 
-#define PWM_MAX     200
+#define PWM_MAX     1023
 #define DEAD_ZONE_P 30
 #define DEAD_ZONE_N 20
 
@@ -91,6 +91,10 @@ void motors_control_logic(){
     s_motors_params[i].encoder_state = next_state;
   }
 
+  set_voltage(s_motors_params[0].driver, s_motors_params[0].speed_ref);
+  set_voltage(s_motors_params[1].driver, s_motors_params[1].speed_ref);
+  
+  /*
   // Speed Control
   if (current_millis - s_last_millis_speed_control >= 20){
     s_last_millis_speed_control = current_millis;
@@ -110,9 +114,10 @@ void motors_control_logic(){
       s_motors_params[i].last_encoder_position = s_motors_params[i].encoder_position;
     }
   }
+  */
 }
 
-void motors_control_set_speed(const motors_control_id_t id,const int speed){
+void motors_control_set_speed(const motors_control_id_t id, const int speed){
   s_motors_params[id].speed_ref = speed;
 }
 
