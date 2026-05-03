@@ -6,7 +6,7 @@
 // Defines
 //**************************************************
 
-#define PWM_MAX     1023
+#define PWM_MAX     800
 #define DEAD_ZONE_P 30
 #define DEAD_ZONE_N 20
 
